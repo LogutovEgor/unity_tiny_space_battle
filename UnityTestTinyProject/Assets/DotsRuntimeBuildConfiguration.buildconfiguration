@@ -42,7 +42,7 @@
         },
         {
             "$type": "Unity.Build.Web.DotsRuntime.WasmOutputSettings, Unity.Build.Web.DotsRuntime",
-            "OutputSingleHTMLFile": true,
+            "OutputSingleHTMLFile": false,
             "MinifyHTMLFile": true,
             "MinifyOutputWithClosure": false,
             "EmbedCpuProfiler": false,
@@ -51,6 +51,11 @@
             "EmitRuntimeMemoryDebugChecks": false,
             "EmitRuntimeAllocationDebugChecks": false,
             "WebTemplateFolder": ""
+        },
+        {
+            "$type": "Unity.Build.DotsRuntime.IL2CPPSettings, Unity.Build.DotsRuntime",
+            "ScriptDebugging": 1,
+            "WaitForDebugger": true
         }
     ]
 }
