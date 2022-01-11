@@ -10,15 +10,17 @@ public class SpaceshipMovementSystem : SystemBase
         float dt = Time.DeltaTime;
         Entities.ForEach((ref PhysicsVelocity velocity, in SpaceshipMovementComponent spaceshipMovementComponent, in LocalToWorld localToWorld) => {
 
-            float2 entityUp = new float2(localToWorld.Up.x, localToWorld.Up.y);
+            //float2 entityUp = new float2(localToWorld.Up.x, localToWorld.Up.y);
 
-            float speed = math.mul(spaceshipMovementComponent.Speed, dt);
+            //float speed = math.mul(spaceshipMovementComponent.Speed, dt);
 
-            float xVelocity = math.mul(entityUp.x, speed);
-            float yVelocity = math.mul(entityUp.y, speed);
+            //float xVelocity = math.mul(entityUp.x, speed);
+            //float yVelocity = math.mul(entityUp.y, speed);
+
+            float xVelocity = localToWorld.Up.x * spaceshipMovementComponent.Speed * dt;
+            float yVelocity = localToWorld.Up.y * spaceshipMovementComponent.Speed * dt;
 
             velocity.Linear = new float2(xVelocity, yVelocity);
-
         }).ScheduleParallel();
     }
 }

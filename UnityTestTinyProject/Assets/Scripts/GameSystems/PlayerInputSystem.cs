@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Tiny;
 using Unity.Tiny.Input;
 
 [UpdateBefore(typeof(SpaceshipRotationSystem))]
@@ -14,6 +15,8 @@ public class PlayerInputSystem : SystemBase
     {
         InputSystem inputSystem = World.GetExistingSystem<InputSystem>();
 
+        //DisplayInfo displayInfo = GetSingleton<DisplayInfo>();
+
         //PlayerInputComponent playerInputComponent = GetSingleton<PlayerInputComponent>();
 
         //playerInputComponent.Left = default;
@@ -26,12 +29,23 @@ public class PlayerInputSystem : SystemBase
 
         // SetSingleton(playerInputComponent);
 
+        
+
         bool left = inputSystem.GetKey(KeyCode.A) || inputSystem.GetKey(KeyCode.LeftArrow);
         bool right = inputSystem.GetKey(KeyCode.D) || inputSystem.GetKey(KeyCode.RightArrow);
 
-        Entities.ForEach((ref SpaceshipRotationComponent spaceshipRotationComponent, in PlayerSpaceship playerSpaceship) => {
-            spaceshipRotationComponent.Clockwise = right;
-            spaceshipRotationComponent.Counterclockwise = left;
-        }).ScheduleParallel();
+        Entity player = GetSingletonEntity<PlayerSpaceship>();
+
+        SpaceshipRotationComponent spaceshipRotationComponent = EntityManager.GetComponentData<SpaceshipRotationComponent>(player);
+
+        spaceshipRotationComponent.Clockwise = right;
+        spaceshipRotationComponent.Counterclockwise = left;
+
+        EntityManager.SetComponentData(player, spaceshipRotationComponent);
+
+        //Entities.ForEach((ref SpaceshipRotationComponent spaceshipRotationComponent, in PlayerSpaceship playerSpaceship) => {
+        //    spaceshipRotationComponent.Clockwise = right;
+        //    spaceshipRotationComponent.Counterclockwise = left;
+        //}).ScheduleParallel();
     }
 }
