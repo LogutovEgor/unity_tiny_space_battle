@@ -7,12 +7,12 @@ public class SpaceshipMovementSystem : SystemBase
 {
     protected override void OnUpdate()
     {
-        var dt = Time.DeltaTime;
-        Entities.ForEach((ref PhysicsVelocity velocity, in SpaceshipComponent spaceshipComponent, in LocalToWorld localToWorld) => {
+        float dt = Time.DeltaTime;
+        Entities.ForEach((ref PhysicsVelocity velocity, in SpaceshipMovementComponent spaceshipMovementComponent, in LocalToWorld localToWorld) => {
 
             float2 entityUp = new float2(localToWorld.Up.x, localToWorld.Up.y);
 
-            float speed = math.mul(spaceshipComponent.Speed, dt);
+            float speed = math.mul(spaceshipMovementComponent.Speed, dt);
 
             float xVelocity = math.mul(entityUp.x, speed);
             float yVelocity = math.mul(entityUp.y, speed);

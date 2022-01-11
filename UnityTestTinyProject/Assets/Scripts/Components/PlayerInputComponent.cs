@@ -3,6 +3,6 @@
 [GenerateAuthoringComponent]
 public struct PlayerInputComponent : IComponentData
 {
-    public bool Left;
-    public bool Right;
+    //public bool Left;
+    //public bool Right;
 }

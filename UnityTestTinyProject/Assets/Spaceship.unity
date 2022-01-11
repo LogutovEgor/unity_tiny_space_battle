@@ -184,9 +184,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6483083275698351639}
   - component: {fileID: 6483083275698351632}
-  - component: {fileID: 6483083275698351638}
-  - component: {fileID: 6483083275698351634}
   - component: {fileID: 6483083275698351637}
+  - component: {fileID: 6483083275698351634}
+  - component: {fileID: 6483083275698351635}
+  - component: {fileID: 6483083275698351636}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -203,11 +204,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 6483083275698351633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7390bd537fb42ae30a6e79f37509, type: 3}
+  m_Script: {fileID: 11500000, guid: c247dfef4bc4af14ea3817d1f8896b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left: 0
-  Right: 0
+  Speed: 150
+--- !u!114 &6483083275698351635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483083275698351633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fb29c95d31eac4fa7623bfcf8f5867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngularSpeed: 20
+  Clockwise: 0
+  Counterclockwise: 0
+--- !u!114 &6483083275698351636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483083275698351633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9161d19cf43cfe4419de9d5e5c017068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &6483083275698351637
 Rigidbody2D:
   serializedVersion: 4
@@ -229,20 +256,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6483083275698351638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6483083275698351633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c247dfef4bc4af14ea3817d1f8896b0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
-  AngularSpeed: 40
 --- !u!4 &6483083275698351639
 Transform:
   m_ObjectHideFlags: 0

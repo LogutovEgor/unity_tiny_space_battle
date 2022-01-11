@@ -1,8 +1,7 @@
 ﻿using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct SpaceshipComponent : IComponentData
+public struct SpaceshipMovementComponent : IComponentData
 {
     public float Speed;
-    public float AngularSpeed;
 }

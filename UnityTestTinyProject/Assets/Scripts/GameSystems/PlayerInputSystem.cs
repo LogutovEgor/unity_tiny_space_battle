@@ -1,28 +1,37 @@
 ﻿using Unity.Entities;
 using Unity.Tiny.Input;
 
+[UpdateBefore(typeof(SpaceshipRotationSystem))]
 public class PlayerInputSystem : SystemBase
 {
-    protected override void OnCreate()
-    {
-        base.OnCreate();
+    //protected override void OnCreate()
+    //{
+    //    base.OnCreate();
 
-        //RequireSingletonForUpdate<PlayerInputComponent>();
-    }
+    //    //RequireSingletonForUpdate<PlayerInputComponent>();
+    //}
     protected override void OnUpdate()
     {
-        var inputSystem = World.GetExistingSystem<InputSystem>();
+        InputSystem inputSystem = World.GetExistingSystem<InputSystem>();
 
-        PlayerInputComponent playerInputComponent = GetSingleton<PlayerInputComponent>();
-        
-        playerInputComponent.Left = default;
-        playerInputComponent.Right = default;
+        //PlayerInputComponent playerInputComponent = GetSingleton<PlayerInputComponent>();
 
-        if (inputSystem.GetKey(KeyCode.A) || inputSystem.GetKey(KeyCode.LeftArrow))
-            playerInputComponent.Left = true;
-        if (inputSystem.GetKey(KeyCode.D) || inputSystem.GetKey(KeyCode.RightArrow))
-            playerInputComponent.Right = true;
+        //playerInputComponent.Left = default;
+        //playerInputComponent.Right = default;
 
-        SetSingleton(playerInputComponent);
+        //if (inputSystem.GetKey(KeyCode.A) || inputSystem.GetKey(KeyCode.LeftArrow))
+        //    playerInputComponent.Left = true;
+        //if (inputSystem.GetKey(KeyCode.D) || inputSystem.GetKey(KeyCode.RightArrow))
+        //    playerInputComponent.Right = true;
+
+        // SetSingleton(playerInputComponent);
+
+        bool left = inputSystem.GetKey(KeyCode.A) || inputSystem.GetKey(KeyCode.LeftArrow);
+        bool right = inputSystem.GetKey(KeyCode.D) || inputSystem.GetKey(KeyCode.RightArrow);
+
+        Entities.ForEach((ref SpaceshipRotationComponent spaceshipRotationComponent, in PlayerSpaceship playerSpaceship) => {
+            spaceshipRotationComponent.Clockwise = right;
+            spaceshipRotationComponent.Counterclockwise = left;
+        }).ScheduleParallel();
     }
 }
